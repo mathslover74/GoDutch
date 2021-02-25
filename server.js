@@ -6,7 +6,7 @@ require('dotenv').config();
 
 // Configuration
 const PORT = process.env.PORT|| 8080;
-const mongoURI = process.env.MONGODB_URI;
+const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/godutch'
 
 
 const app = express();

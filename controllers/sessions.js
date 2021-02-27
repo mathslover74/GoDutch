@@ -22,7 +22,7 @@ sessions.post('/', (req, res) => {
         res.redirect('/');
         // if passwords don't match, handle the error
       } else {
-        res.send('<a href="/">wrong password</a>');
+        res.render('sessions/invalid.ejs');
       }
     }
   });

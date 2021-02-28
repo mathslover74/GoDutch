@@ -13,7 +13,11 @@ const { response } = require('express');
 
 expenses.get('/', (req, res)=>{
   if(req.session.currentUser){
-      res.render('expenses/index.ejs');
+      expensesLog.find({}, (error,allExpenses )=>{
+        res.render('expenses/index.ejs', {
+            expenses: allExpenses
+        });
+    });
   } else {
       res.redirect('/sessions/new');
   }
@@ -29,21 +33,20 @@ expenses.get('/new', (req, res) => {
 ///Create route create data in mongoDB
 expenses.post('/', (req, res)=>{
   expensesLog.create(req.body, (err, createItem) => {
-    // res.send(createItem)
+    // res.send(req.body);
     res.redirect('/expenses');
   })
 });
 
 ///Create index route
 
-expenses.get('/', (req, res)=>{
-  expensesLog.find({}, (error,allExpenses )=>{
-      res.render('/expenses/index.ejs', {
-          expenses: allExpenses
-      });
-  });
-  res.render('expenses/index.ejs');
-});
+// expenses.get('/', (req, res)=>{
+//   expensesLog.find({}, (error,allExpenses )=>{
+//       res.render('/expenses/index.ejs', {
+//           expenses: allExpenses
+//       });
+//   });
+// });
 
 expenses.get('/seed', (req, res)=>{
   expensesLog.create([
@@ -52,13 +55,13 @@ expenses.get('/seed', (req, res)=>{
       description: 'drinks',
       name:'friend 1',
       paidByYou: true,
-      price: 5
+      amount: 5
     }, {
       date: '2021-02-11',
       description: 'Food',
       name:'friend 2',
       paidByYou: true,
-      price: 10
+      amount: 10
     },
   ], (err, data)=>{
       res.redirect('/expenses');
@@ -68,12 +71,12 @@ expenses.get('/seed', (req, res)=>{
 ///Create Show Route
 
 expenses.get('/:id', (req, res)=>{
-  // items.findById(req.params.id, (err, foundItems) => {
-  //     res.render('show.ejs', {
-  //         items:foundItems
-  //     });
-  // });
-  res.render('expensess/show.ejs');
+  expensesLog.findById(req.params.id, (err, foundItems) => {
+      res.render('expenses/show.ejs', {
+          expenses:foundItems
+      });
+  });
+  res.render('expenses/show.ejs');
   // res.send('link');
 });
 

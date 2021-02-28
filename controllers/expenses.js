@@ -27,6 +27,7 @@ expenses.get('/', (req, res)=>{
 ///Create create route
 expenses.get('/new', (req, res) => {
   res.render('expenses/new.ejs');
+  
   // res.send('linked');
 });
 
@@ -76,11 +77,16 @@ expenses.get('/:id', (req, res)=>{
           expenses:foundItems
       });
   });
-  res.render('expenses/show.ejs');
+  // res.render('expenses/show.ejs');
   // res.send('link');
 });
 
-
-
+///Create Delete route
+expenses.delete('/:id', (req,res) => {
+  // res.send('delete');
+  expensesLog.findByIdAndRemove(req.params.id, (err,data) => {
+    res.redirect('/expenses'); ///redirect back to index
+  })
+});
 
 module.exports = expenses;

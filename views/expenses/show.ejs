@@ -6,7 +6,7 @@
   <body>
     <%- include ('../partials/nav2.ejs') -%>
     
-    <h1>Dashboard</h1>
+    <h1><%= expenses.name; %></h1>
   <h2>Bank Amount Balance</h2>
   <button><a href="/expenses/new">Create Expenses</a></button>
   <table class="u-full-width">
@@ -28,7 +28,7 @@
     <h4>$<%= expenses.description; %></h4>
     
     <!--  ADD EDIT HERE-->
-    <br><a href="/expenses/<%= items.id %>/edit">Edit</a>
+    <br><a href="/expenses/<%= expenses.id %>/edit">Edit</a>
 </div>
   </body>
 </html>

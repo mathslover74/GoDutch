@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%- include ('../partials/head.ejs') -%>
+  </head>
+  <body>
+    <%- include ('../partials/nav2.ejs') -%>
+    <h1>New Item</h1>
+<!-- 
+    <form action="/expenses" method="POST">
+        Date: <input type="text" name="date" /><br/>
+        Description: <input type="text" name="description" /><br/>
+        Name: <input type='text' name="name" /><br/>
+        Paid by you?: <input type="checkbox" name="paidByYou" /><br/>
+        Amount: <input type="number" name="amount" /><br/>
+        <input type="submit" name="" value="Create Item"/>
+    </form> -->
+
+
+
+    <div class="row">
+      <form class="col s12" action="/expenses" method="POST">
+        <div class="row">
+          <div class="input-field col s6">
+            <input placeholder="Placeholder" id="date" type="date" class="validate" name="date" required>
+            <label for="date">Date</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input placeholder="Food drinks others" id="desciption" type="text" class="validate" name="desciption" required>
+            <label for="description">Description</label>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="input-field col s6">
+            <input placeholder="Name of friend" id="name" type="text" class="validate" name="name" required>
+            <label for="name">Name</label>
+          </div>
+        </div>
+
+        <div class="input-field col s12">
+          <select>
+            <option value="name" disabled selected>Choose your friend</option>
+            <option value="1">friend 1</option>
+            <option value="2">friend 2</option>
+            <option value="3">friend 3</option>
+          </select>
+
+          <select class="u-full-width" id="exampleRecipientInput">
+            <option value="1">Friend 1</option>
+            <option value="2">Friend 1</option>
+            <option value="3">Friend 1</option>
+          </select>
+
+          
+          <label>Friend</label>
+        </div>
+
+      
+
+
+
+        <div class="row">
+          <div class="input-field col s6">
+            <label>
+              <input id='paidByYou' type="checkbox" class="filled-in" checked="paidByYou" />
+              <span>Paid by you?</span>
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="amount" type="number" class="validate" name="amount" required>
+            <label for="amount">Amount</label>
+          </div>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit" name="action">Create expenses
+          <i class="material-icons right">send</i>
+        </button>
+      </form>
+  </body>
+</html>

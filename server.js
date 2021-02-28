@@ -7,6 +7,7 @@ require('dotenv').config();
 const app = express();
 const userController = require('./controllers/users.js');
 const sessionsController = require('./controllers/sessions.js');
+const expensesController = require('./controllers/expenses.js');
 
 
 
@@ -18,7 +19,7 @@ const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/godutch'
 // allows us to use put and delete methods
 app.use(methodOverride('_method'));
 // parses info from our input fields into an object
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 //allow to access to public
 app.use(express.static('public'));
 
@@ -34,8 +35,13 @@ mongoose.connection.once('open', () => {
   console.log('connected to mongo');
 });
 
+///controller
+//users after login
 app.use('/users', userController);
+///login 
 app.use('/sessions', sessionsController);
+///app
+app.use('/expenses', expensesController);
 
 
 // Routes
@@ -45,13 +51,13 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get('/app', (req, res)=>{
-  if(req.session.currentUser){
-      res.render('app/index.ejs')
-  } else {
-      res.redirect('/sessions/new');
-  }
-})
+// app.get('/app', (req, res)=>{
+//   if(req.session.currentUser){
+//       res.render('app/index.ejs')
+//   } else {
+//       res.redirect('/sessions/new');
+//   }
+// })
 
 
 

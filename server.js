@@ -21,7 +21,9 @@ app.use(methodOverride('_method'));
 // parses info from our input fields into an object
 app.use(express.urlencoded({ extended: true }));
 //allow to access to public
-app.use(express.static('public'));
+// app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
+
 
 app.use(session({
   secret: process.env.SECRET,
@@ -37,7 +39,6 @@ const isAuthenticated = (req, res, next) => {
   } else {
     res.redirect('/');
   }
-
 }
 
 // Database

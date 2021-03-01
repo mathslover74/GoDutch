@@ -2,6 +2,29 @@
 * {
     border: 1px solid gold;
 } */
+
+
+/* body {
+  Background: purple;
+  }; */
+
+  input[type=button],input[value=Logout],input[id=logout] #logout {
+    background-color:#ee6e73;
+    color: white;
+    border-style: none;
+    /* height: 56px; */
+    height: 64px;
+    width: 76.3;
+
+  };
+
+  .invalid {
+    color: red;
+  };
+
+  [type='checkbox']:checked {
+    opacity: 1;
+  }
 /* 
 .container1 {
   border: 5px solid red;
@@ -25,7 +48,3 @@ h3 {
   margin-top: 0px;
   margin-bottom:2px;
 } */
-
-.invalid {
-  color: red;
-};

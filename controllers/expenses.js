@@ -59,7 +59,7 @@ expenses.get('/new', (req, res) => {
 expenses.post('/', (req, res)=>{
   expensesLog.create(req.body, (err, createItem) => {
     // res.send(req.body);
-    res.redirect('/expenses');
+    res.redirect('/expenses/dashboard');
   })
 });
 
@@ -118,12 +118,59 @@ expenses.delete('/:id', (req,res) => {
 //get edit
 expenses.get('/:id/edit', (req, res)=>{
   expensesLog.findById(req.params.id, (err, foundItem)=>{ //find the item
-      res.render(
-      'edit.ejs',
-      {
-        items: foundItem, //pass in found item
+      res.render('expenses/edit.ejs', {
+        expenses: foundItem //pass in found item
       });
-  });
+  }); 
 });
+
+
+///put edit
+expenses.put('/:id', (req, res) => {
+	if (req.body.paidByYou === 'on') {
+		req.body.paidByYou = true;
+	} else {
+		req.body.paidByYou = false;
+	}
+	expensesLog.findByIdAndUpdate(
+		req.params.id,
+		req.body,
+		{ new: true },
+		(err, updatedModel) => {
+			res.redirect('/expenses/'+req.params.id);
+		}
+	);
+});
+
+// Create route
+expenses.post('/:id', (req, res) => {
+	if (req.body.paidByYou === 'on') {
+		//if checked, req.body.readyToEat is set to 'on'
+		req.body.paidByYou = true;
+	} else {
+		//if not checked, req.body.readyToEat is undefined
+		req.body.paidByYou = false;
+	}
+
+	expensesLog.create(req.body, (err, createdItem) => {
+		if (err) res.send(err.message);
+
+		res.redirect('/expenses'+req.params.id);
+	});
+});
+
+
+// router.post('/:id',(req,res) => {
+//   items.findByIdAndUpdate(req.params.id, 
+//     {$inc: {qty: -1}},
+//     {new:true}, (err,updatedModel) => {
+//       if (err) console.log(err.message);
+//       else {
+//         res.redirect('/store/'+req.params.id);
+//       }
+//     });
+// });
+
+
 
 module.exports = expenses;

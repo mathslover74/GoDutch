@@ -12,10 +12,10 @@ sessions.post('/', (req, res) => {
   // if db error handle the db error
     if(err) {
       console.log(err);
-      res.send('oops something went wrong');
+      res.render('sessions/invalid.ejs');
       // if user not found, handle the error
     } else if (!foundUser) {
-      res.send('user not found!');
+      res.render('sessions/invalid.ejs');
     }else {
       if(bcrypt.compareSync(req.body.password, foundUser.password)) {
         req.session.currentUser = foundUser;

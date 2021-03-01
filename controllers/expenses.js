@@ -4,14 +4,34 @@ const expensesLog = require('../models/expenses.js');
 const User = require('../models/users.js');
 const bcrypt = require('bcrypt');
 const { response } = require('express');
-
 // expenses.get('/', (req, res) => {
 //   res.render('index.ejs', {
 //     currentUser: req.session.currentUser
 //   });
 // });
 
-expenses.get('/', (req, res)=>{
+//Check Authenticated
+const isAuthenticated = (req, res, next) => {
+  console.log(req.session.currentUser);
+  if (req.session.currentUser) {
+    return next();
+  } else {
+    res.redirect('/');
+  }
+}
+
+// expenses.get('/', isAuthenticated, (req, res) => {
+//   //find all users
+//   User.find({}, (err, foundUsers) => {
+//     //render dashboard
+//     res.render('expenses/index.ejs', {
+//       // pass the found users to dashboard
+//       users:foundUsers,
+//     });
+//   });  
+// });
+
+expenses.get('/dashboard', (req, res)=>{
   if(req.session.currentUser){
       expensesLog.find({}, (error,allExpenses )=>{
         res.render('expenses/index.ejs', {
@@ -26,8 +46,12 @@ expenses.get('/', (req, res)=>{
 
 ///Create create route
 expenses.get('/new', (req, res) => {
-  res.render('expenses/new.ejs');
-  
+  // res.render('expenses/new.ejs');
+  if (req.session.currentUser) {
+    res.render('expenses/new.ejs');
+  } else {
+    res.redirect('/sessions/new');
+  }
   // res.send('linked');
 });
 
@@ -87,6 +111,19 @@ expenses.delete('/:id', (req,res) => {
   expensesLog.findByIdAndRemove(req.params.id, (err,data) => {
     res.redirect('/expenses'); ///redirect back to index
   })
+});
+
+//Create edit route/Page
+
+//get edit
+expenses.get('/:id/edit', (req, res)=>{
+  expensesLog.findById(req.params.id, (err, foundItem)=>{ //find the item
+      res.render(
+      'edit.ejs',
+      {
+        items: foundItem, //pass in found item
+      });
+  });
 });
 
 module.exports = expenses;

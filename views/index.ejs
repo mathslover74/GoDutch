@@ -15,7 +15,7 @@
         Welcome <%=currentUser.username%>!
         </h1>
         <h2>
-          <a class="waves-effect waves-light btn" href="/expenses/">Dashboard</a>
+          <a class="waves-effect waves-light btn" href="/expenses/dashboard">Dashboard</a>
         </h2>          
         <h2>
           <a class="waves-effect waves-light btn" href="/expenses/new">Create expenses</a>
@@ -26,7 +26,11 @@
       </form>
 
         <% } else { %>
-          <h1>Intro</h1>
+          <h1>Introduction to GoDutch</h1>
+          <div>
+            <p>This is a self-made application to track expenses when you GoDutch with your friends. Sign up to try it out!</p>
+          </div>
+          
           <h2>Please </h2>
           <a class="waves-effect waves-light btn" href="/users/new">Sign Up</a>
           <h3>or</h3>

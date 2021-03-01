@@ -1,7 +1,7 @@
-
+/* 
 * {
     border: 1px solid gold;
-}
+} */
 /* 
 .container1 {
   border: 5px solid red;
@@ -25,3 +25,7 @@ h3 {
   margin-top: 0px;
   margin-bottom:2px;
 } */
+
+.invalid {
+  color: red;
+};

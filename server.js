@@ -29,6 +29,17 @@ app.use(session({
   saveUninitialized: false
 }))
 
+//Check Authenticated
+const isAuthenticated = (req, res, next) => {
+  console.log(req.session.currentUser);
+  if (req.session.currentUser) {
+    return next();
+  } else {
+    res.redirect('/');
+  }
+
+}
+
 // Database
 mongoose.connect(mongoURI, { useNewUrlParser: true })
 mongoose.connection.once('open', () => {
@@ -44,12 +55,16 @@ app.use('/sessions', sessionsController);
 app.use('/expenses', expensesController);
 
 
-// Routes
+// Routes for index
 app.get('/', (req, res) => {
   res.render('index.ejs', {
     currentUser: req.session.currentUser
   });
 });
+
+app.get ('/expenses', isAuthenticated, (req,res)=> {
+  res.render('expenses/index.ejs');
+})
 
 // app.get('/app', (req, res)=>{
 //   if(req.session.currentUser){

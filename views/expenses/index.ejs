@@ -2,6 +2,8 @@
 <html lang="en" dir="ltr">
   <head>
     <%- include ('../partials/head.ejs') -%>
+    <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+
   </head>
   <%- include ('../partials/nav2.ejs') -%>
   <body>
@@ -14,7 +16,8 @@
     <h2>
       <a class="waves-effect waves-light btn" href="/expenses/new">Create expenses</a>
     </h2>            
-    <table class="u-full-width">
+    <!-- <table class="u-full-width"> -->
+      <table class="sortable">
       <thead>
         <tr>
           <th>Date (DD-MM-YYYY)</th>
@@ -31,7 +34,7 @@
       </thead>
       <tbody>      
         <% for (let i = 0; i < expenses.length; i++) { %>
-           <tr>
+           <tr class="item">
              <td><%= expenses[i].date %></td>
              <td><%= expenses[i].createdBy %></td>
              <td><%= expenses[i].name %></td>

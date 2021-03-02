@@ -7,7 +7,7 @@
     <%- include ('../partials/nav2.ejs') -%>
     
     <h1><%= expenses.name; %></h1>
-  <h2>Bank Amount Balance</h2>
+  <h2>Edit Expenses</h2>
 
    <h2>
           <a class="waves-effect waves-light btn" href="/expenses/new">Create expenses</a>
@@ -37,10 +37,10 @@
 
 
     <div class="row">
-      <form class="col s12" action="/expenses/<%expenses.id%>?_method=PUT" method="POST">
+      <form class="col s12" action="/expenses/<%=expenses.id%>?_method=PUT" method="POST">
         <div class="row">
           <div class="input-field col s6">
-            <input value="<%=expenses.date%>" id="date" type="date" class="validate" name="date" required>
+            <input value="<%=expenses.date%>" id="date" type="text" class="validate" name="date" required>
             <label for="date">Date</label>
           </div>
 
@@ -109,7 +109,7 @@
         <th>Description</th>
         <th>Paid by</th>
         <th>Amount ($)</th>
-        <th>Delete</th>
+        <th>Settle?</th>
       </tr>
     </thead>
     <tbody>      
@@ -118,17 +118,6 @@
            <td><%= expenses.name %></td>
            <td><a href="/expenses/<%= expenses.id%>"><%= expenses.description; %></a></td>
            <!-- <td><a href="/<%= expenses.id%>"><%= expenses.description; %></a></td> -->
-           <% if (expenses.paidByYou === true) { %>
-            <td>true</td>
-          <% } else { %>
-            <td>false</td>
-          <% } %>
-            <td><%= expenses.amount/2 %></td>
-            <td>
-              <form action="/expenses/<%=expenses.id; %>?_method=DELETE" method="POST">
-              <input type="submit" value="DELETE" />
-            </form>
-          </td>
            
            
           </tr>

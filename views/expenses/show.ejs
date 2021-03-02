@@ -21,7 +21,7 @@
         <th>Description</th>
         <th>Paid by</th>
         <th>Amount ($)</th>
-        <th>Delete</th>
+        <th>Settle?</th>
       </tr>
     </thead>
     <tbody>      
@@ -38,7 +38,7 @@
             <td><%= expenses.amount/2 %></td>
             <td>
               <form action="/expenses/<%=expenses.id; %>?_method=DELETE" method="POST">
-              <input type="submit" value="DELETE" />
+              <input type="submit" value="Settle Up?" />
             </form>
           </td>
            

@@ -40,12 +40,20 @@
              <td><%= expenses[i].name %></td>
              <td><a href="/expenses/<%= expenses[i].id%>"><%= expenses[i].description; %></a></td>
              <!-- <td><a href="/<%= expenses.id%>"><%= expenses[i].description; %></a></td> -->
+             <!-- <td><%= expenses[i].paidByYou; %></a></td> -->
                 <% if (expenses[i].paidByYou === true) { %>
-                  <td>true</td>
+                  <td>Me</td>
                 <% } else { %>
-                  <td>false</td>
+                  <td><%=expenses[i].name%></td>
                 <% } %> 
-              <td><%= expenses[i].amount/2 %></td>
+
+                <% if (expenses[i].paidByYou === false) { %>
+                  <td>-<%= expenses[i].amount/2 %></td>
+                <% } else { %>
+                  <td><%= expenses[i].amount/2 %></td>
+               <% } %>
+
+              <!-- <td><%= expenses[i].amount/2 %></td> -->
               <td>
                 <form action="/expenses/<%=expenses[i].id; %>?_method=DELETE" method="POST">
                 <input type="submit" value="Settle Up!" />

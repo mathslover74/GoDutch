@@ -4,11 +4,6 @@ const expensesLog = require('../models/expenses.js');
 const User = require('../models/users.js');
 const bcrypt = require('bcrypt');
 const { response } = require('express');
-// expenses.get('/', (req, res) => {
-//   res.render('index.ejs', {
-//     currentUser: req.session.currentUser
-//   });
-// });
 
 //Check Authenticated
 const isAuthenticated = (req, res, next) => {
@@ -33,6 +28,8 @@ const isAuthenticated = (req, res, next) => {
 
 expenses.get('/dashboard',isAuthenticated, (req, res)=>{
   // if(req.session.currentUser){
+    console.log('**********************');
+    console.log(req.session.currentUser);
       expensesLog.find({}, (error,allExpenses )=>{
         res.render('expenses/index.ejs', {
             expenses: allExpenses
@@ -193,18 +190,6 @@ expenses.post('/' ,isAuthenticated, (req, res) => {
 		res.redirect('/expenses/dashboard');
 	});
 });
-
-
-// router.post('/:id',(req,res) => {
-//   items.findByIdAndUpdate(req.params.id, 
-//     {$inc: {qty: -1}},
-//     {new:true}, (err,updatedModel) => {
-//       if (err) console.log(err.message);
-//       else {
-//         res.redirect('/store/'+req.params.id);
-//       }
-//     });
-// });
 
 
 

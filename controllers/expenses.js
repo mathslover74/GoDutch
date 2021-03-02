@@ -32,7 +32,6 @@ const isAuthenticated = (req, res, next) => {
 // });
 
 expenses.get('/dashboard',isAuthenticated, (req, res)=>{
-
   // if(req.session.currentUser){
       expensesLog.find({}, (error,allExpenses )=>{
         res.render('expenses/index.ejs', {
@@ -184,10 +183,13 @@ expenses.post('/' ,isAuthenticated, (req, res) => {
 		req.body.paidByYou = false;
 	}
 
-	expensesLog.create(req.body ,isAuthenticated, (err, updatedModel) => {
+	expensesLog.create(req.body , (err, updatedModel) => {
+    console.log('***********before*******');
+
 		if (err) res.send(err.message);
-    console.log(err);
+    // console.log(err);
     console.log(updatedModel);
+    console.log('******************');
 		res.redirect('/expenses/dashboard');
 	});
 });

@@ -6,11 +6,12 @@ const Schema = mongoose.Schema
 const expensesSchema = new Schema({
   // date: { type:Date, required: true},
   // createdBy: {type: Schema.Types.ObjectId, ref:'username'},
-  createdBy: {type: String, required: true},
+  createdBy: {type: String},
   date: { type: String, required: true},
   description:  { type: String, required: true },
   name:  { type: String, required: true },
-  paidByYou:  { type: Boolean },
+  // paidByYou:  { type: Boolean },
+  paidByYou: Boolean,
   amount:  { type: Number, min: 0.1}
 })
 

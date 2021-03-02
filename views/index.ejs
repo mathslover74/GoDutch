@@ -3,12 +3,14 @@
   <head>
     <%- include ('./partials/head.ejs') -%>
   </head>
-  <body>
-    <% if(currentUser) { %>
+
+  <% if(currentUser) { %>
     <%- include ('./partials/nav2.ejs') -%>
     <% } else { %>
       <%- include ('./partials/nav.ejs') -%>
       <% } %>
+  <body>
+   <div class="box">
     <div class="container">
       <h1>
         <% if(currentUser) { %>
@@ -38,5 +40,8 @@
         <% } %>
       </div>
     </div>
+
+   </div>
+   
   </body>
 </html>

@@ -14,6 +14,8 @@ users.post('/', (req, res) => {
       console.log(err);
     }
     // console.log(createdUser); will show pw
+    console.log(createdUser);
+    console.log(req.body);
     res.redirect('/sessions/new');
   });
 });

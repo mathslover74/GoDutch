@@ -3,10 +3,10 @@
   <head>
     <%- include ('../partials/head.ejs') -%>
   </head>
+  <%- include ('../partials/nav2.ejs') -%>
   <body>
-    <%- include ('../partials/nav2.ejs') -%>
-    
-    <h1><%= expenses.name; %></h1>
+    <div class="box">
+      <h1><%= expenses.name; %></h1>
   <h2>Bank Amount Balance</h2>
 
    <h2>
@@ -52,7 +52,12 @@
     <h4>$<%= expenses.description; %></h4> -->
     
     <!--  ADD EDIT HERE-->
-    <br><a href="/expenses/dashboard">Back to Dashboard</a>
+    <h2>
+      <a class="waves-effect waves-light btn" href="/expenses/dashboard">Back to Dashboard</a>
+    </h2>    
 </div>
   </body>
+    </div>
+    
+    
 </html>

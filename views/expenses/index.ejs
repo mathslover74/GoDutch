@@ -3,53 +3,60 @@
   <head>
     <%- include ('../partials/head.ejs') -%>
   </head>
+  <%- include ('../partials/nav2.ejs') -%>
   <body>
-    <%- include ('../partials/nav2.ejs') -%>
-    
-    <h1>Dashboard</h1>
-  <h2>
-    <a class="waves-effect waves-light btn" href="/expenses/new">Create expenses</a>
-  </h2>            
-  <table class="u-full-width">
-    <thead>
-      <tr>
-        <th>Date (DD-MM-YYYY)</th>
-        <th>Created by</th>
-        <th>Friend</th>
-        <th>Description</th>
-        <th>Paid by</th>
-        <th>Amount ($)</th>
-        <th>Settle?</th>
-        
-        
-      </tr>
+    <div class="box">
+      <div>
 
-    </thead>
-    <tbody>      
-      <% for (let i = 0; i < expenses.length; i++) { %>
-         <tr>
-           <td><%= expenses[i].date %></td>
-           <td><%= expenses[i].createdBy %></td>
-           <td><%= expenses[i].name %></td>
-           <td><a href="/expenses/<%= expenses[i].id%>"><%= expenses[i].description; %></a></td>
-           <!-- <td><a href="/<%= expenses.id%>"><%= expenses[i].description; %></a></td> -->
-              <% if (expenses[i].paidByYou === true) { %>
-                <td>true</td>
-              <% } else { %>
-                <td>false</td>
-              <% } %> 
-            <td><%= expenses[i].amount/2 %></td>
-            <td>
-              <form action="/expenses/<%=expenses[i].id; %>?_method=DELETE" method="POST">
-              <input type="submit" value="Settle Up!" />
-            </form>
-          </td>
+      
+      </div>
+      <h1>Dashboard</h1>
+    <h2>
+      <a class="waves-effect waves-light btn" href="/expenses/new">Create expenses</a>
+    </h2>            
+    <table class="u-full-width">
+      <thead>
+        <tr>
+          <th>Date (DD-MM-YYYY)</th>
+          <th>Created by</th>
+          <th>Friend</th>
+          <th>Description</th>
+          <th>Paid by</th>
+          <th>Amount ($)</th>
+          <th>Settle?</th>
+          
+          
+        </tr>
+  
+      </thead>
+      <tbody>      
+        <% for (let i = 0; i < expenses.length; i++) { %>
+           <tr>
+             <td><%= expenses[i].date %></td>
+             <td><%= expenses[i].createdBy %></td>
+             <td><%= expenses[i].name %></td>
+             <td><a href="/expenses/<%= expenses[i].id%>"><%= expenses[i].description; %></a></td>
+             <!-- <td><a href="/<%= expenses.id%>"><%= expenses[i].description; %></a></td> -->
+                <% if (expenses[i].paidByYou === true) { %>
+                  <td>true</td>
+                <% } else { %>
+                  <td>false</td>
+                <% } %> 
+              <td><%= expenses[i].amount/2 %></td>
+              <td>
+                <form action="/expenses/<%=expenses[i].id; %>?_method=DELETE" method="POST">
+                <input type="submit" value="Settle Up!" />
+              </form>
+            </td>
+             
+             
+            </tr>
            
-           
-          </tr>
-         
-       <% } %>
-    </tbody>
-  </table>
+         <% } %>
+      </tbody>
+    </table>
+
+    </div>
+    
   </body>
 </html>

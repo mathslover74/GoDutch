@@ -14,7 +14,7 @@ const { response } = require('express');
 const isAuthenticated = (req, res, next) => {
   console.log(req.session.currentUser);
   if (req.session.currentUser) {
-    return next();
+    next();
   } else {
     res.redirect('/sessions/new');
   }
@@ -58,12 +58,20 @@ expenses.get('/new',isAuthenticated , (req, res) => {
 });
 
 ///Create route create data in mongoDB
-expenses.post('/',isAuthenticated , (req, res)=>{
-  expensesLog.create(req.body, (err, createItem) => {
-    // res.send(req.body);
-    res.redirect('/expenses/dashboard');
-  })
-});
+// expenses.post('/',isAuthenticated , (req, res)=>{
+
+//   console.log('hello');
+//   expensesLog.create(req.body, (err, createItem) => {
+//     console.log(createItem);
+//     console.log(req.body);
+//     if (err) {
+//       console.log(err);
+//     }
+//     // res.send(req.body);
+//     res.redirect('/expenses/dashboard');
+//   })
+// });
+
 
 ///Create index route
 
@@ -165,7 +173,9 @@ expenses.put('/:id' ,isAuthenticated, (req, res) => {
 });
 
 // Create route
-expenses.post('/:id' ,isAuthenticated, (req, res) => {
+expenses.post('/' ,isAuthenticated, (req, res) => {
+  console.log('**************************')
+  console.log(req.body);
 	if (req.body.paidByYou === 'on') {
 		//if checked, req.body.paidByYou is set to 'on'
 		req.body.paidByYou = true;
@@ -176,8 +186,9 @@ expenses.post('/:id' ,isAuthenticated, (req, res) => {
 
 	expensesLog.create(req.body ,isAuthenticated, (err, updatedModel) => {
 		if (err) res.send(err.message);
-
-		res.redirect('/expenses/'+req.params.id);
+    console.log(err);
+    console.log(updatedModel);
+		res.redirect('/expenses/dashboard');
 	});
 });
 

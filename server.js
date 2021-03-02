@@ -13,7 +13,9 @@ const expensesController = require('./controllers/expenses.js');
 
 // Configuration
 const PORT = process.env.PORT|| 8080;
-const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/godutch'
+// const mongoURI = process.env.DB_URI || 'mongodb://localhost:27017/godutch'
+// const mongoURI = 'mongodb://localhost:27017/godutch'
+const mongoURI = process.env.DB_URI;
 
 // Middleware
 // allows us to use put and delete methods
@@ -54,6 +56,8 @@ app.use('/users', userController);
 app.use('/sessions', sessionsController);
 ///app
 app.use('/expenses', expensesController);
+
+
 
 
 // Routes for index

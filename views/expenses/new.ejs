@@ -2,84 +2,106 @@
 <html lang="en" dir="ltr">
   <head>
     <%- include ('../partials/head.ejs') -%>
+    
   </head>
+  <%- include ('../partials/nav2.ejs') -%>
   <body>
-    <%- include ('../partials/nav2.ejs') -%>
-    <h1>New Item</h1>
-<!-- 
-    <form action="/expenses" method="POST">
-        Date: <input type="text" name="date" /><br/>
-        Description: <input type="text" name="description" /><br/>
-        Name: <input type='text' name="name" /><br/>
-        Paid by you?: <input type="checkbox" name="paidByYou" /><br/>
-        Amount: <input type="number" name="amount" /><br/>
-        <input type="submit" name="" value="Create Item"/>
-    </form> -->
+    <div class="box">
+      <h1>New Item</h1>
+      <!-- 
+          <form action="/expenses" method="POST">
+              Date: <input type="text" name="date" /><br/>
+              Description: <input type="text" name="description" /><br/>
+              Name: <input type='text' name="name" /><br/>
+              Paid by you?: <input type="checkbox" name="paidByYou" /><br/>
+              Amount: <input type="number" name="amount" /><br/>
+              <input type="submit" name="" value="Create Item"/>
+          </form> -->
+      
+      
+      <!-- ///////////////////// MATERIALIZE -->
+          <div class="row">
+            <form class="col s12" action="/expenses" method="POST">
+              <div class="row">
+                <div class="input-field col s6">
+                  <!-- <input placeholder="dd-mm-yyyy" id="date" type="date" class="validate" name="date" value='' min='2021-01-01' max='2030-12-31'required> -->
+                  <input placeholder="dd-mm-yyyy" id="date" type="text" class="validate" name="date" value=''required>
+                  <label for="date">Date</label>
+                </div>
+      <!-- 
+                <div class="input-field col s12">
+                  <select>
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                  </select>
+                  <label>Materialize Select</label>
+                </div>
+      
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+          var elems = document.querySelectorAll('select');
+          var instances = M.FormSelect.init(elems, options);
+        }); -->
+                </script>
+              
+      
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input placeholder="you or your friend" id="description" type="text" class="validate" name="createdBy" required>
+                  <label for="description">createdBy</label>
+                </div>
+              </div>
+      
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input placeholder="Food drinks others" id="description" type="text" class="validate" name="description" required>
+                  <label for="description">Description</label>
+                </div>
+              </div>
+      
+      
+              <div class="row">
+                <div class="input-field col s6">
+                  <input placeholder="Name of friend" id="name" type="text" class="validate" name="name" required>
+                  <label for="name">Name</label>
+                </div>
+              </div>
+    
+              <div class="row">
+                <div class="input-field col s6">
+                  <label>
+                    <!-- <input id='paidByYou' type="checkbox" class="filled-in" checked="paidByYou" /> -->
+                    <input id='paidByYou' type="checkbox" class="filled-in" checked="paidByYou" name="paidByYou" />
+                    <span>Paid by you?</span>
+                  </label>
+                </div>
+              </div>
 
+              <label>Paid by you?</label>
+              <select class="browser-default">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+              </select>
+                        
 
-
-    <div class="row">
-      <form class="col s12" action="/expenses" method="POST">
-        <div class="row">
-          <div class="input-field col s6">
-            <!-- <input placeholder="dd-mm-yyyy" id="date" type="date" class="validate" name="date" value='' min='2021-01-01' max='2030-12-31'required> -->
-            <input placeholder="dd-mm-yyyy" id="date" type="text" class="validate" name="date" value=''required>
-            <label for="date">Date</label>
+              
+      
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="amount" type="number" class="validate" name="amount" required>
+                  <label for="amount">Amount</label>
+                </div>
+              </div>
+              <button class="btn waves-effect waves-light" type="submit" name="">Create expenses
+                <i class="material-icons right">send</i>
+              </button>
+            </form>
           </div>
-
-        </div>
-        <div class="row">
-          <div class="input-field col s6">
-            <input placeholder="Food drinks others" id="description" type="text" class="validate" name="description" required>
-            <label for="description">Description</label>
-          </div>
-        </div>
-
-
-        <div class="row">
-          <div class="input-field col s6">
-            <input placeholder="Name of friend" id="name" type="text" class="validate" name="name" required>
-            <label for="name">Name</label>
-          </div>
-        </div>
-
-        <!-- <div class="input-field col s12">
-          <select>
-            <option value="name" disabled selected>Choose your friend</option>
-            <option value="1">friend 1</option>
-            <option value="2">friend 2</option>
-            <option value="3">friend 3</option>
-          </select> -->
-
-          <select class="u-full-width" id="exampleRecipientInput">
-            <option value="1">Friend 1</option>
-            <option value="2">Friend 1</option>
-            <option value="3">Friend 1</option>
-          </select>
-
-          
-          <!-- <label>Friend</label> -->
-        <!-- </div> -->
-        <div class="row">
-          <div class="input-field col s6">
-            <label>
-              <!-- <input id='paidByYou' type="checkbox" class="filled-in" checked="paidByYou" /> -->
-              <input id='paidByYou' type="checkbox" class="filled-in" checked="paidByYou" name="paidByYou" />
-              <span>Paid by you?</span>
-            </label>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="amount" type="number" class="validate" name="amount" required>
-            <label for="amount">Amount</label>
-          </div>
-        </div>
-        <button class="btn waves-effect waves-light" type="submit" name="action">Create expenses
-          <i class="material-icons right">send</i>
-        </button>
-      </form>
     </div>
   </body>
 </html>

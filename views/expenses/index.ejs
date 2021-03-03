@@ -48,9 +48,9 @@
                 <% } %> 
 
                 <% if (expenses[i].paidByYou === false) { %>
-                  <td>-<%= expenses[i].amount/2 %></td>
+                  <td><span class="redText">-$<%= expenses[i].amount/2 %></span></td>
                 <% } else { %>
-                  <td><%= expenses[i].amount/2 %></td>
+                  <td><span class="greenText">$<%= expenses[i].amount/2 %></span></td>
                <% } %>
 
               <!-- <td><%= expenses[i].amount/2 %></td> -->

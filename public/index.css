@@ -10,8 +10,21 @@
   }; */
 
   .box {
-    padding: 15px;
+    padding: 20px;
   }
+
+  .space {
+    margin-top: 10px;
+  }
+
+  .greenText {
+    color: rgb(129, 223, 7);
+  }
+
+  .redText {
+    color: red;
+  }
+  
   input[type=button],input[value=Logout],input[id=logout] #logout {
     background-color:#ee6e73;
     color: white;

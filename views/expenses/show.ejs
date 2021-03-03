@@ -6,57 +6,57 @@
   <%- include ('../partials/nav2.ejs') -%>
   <body>
     <div class="box">
-  <h2>Show Entry</h2>
+      <h2>Show Entry</h2>
 
-   <h2>
-          <a class="waves-effect waves-light btn" href="/expenses/new">Create expenses</a>
-        </h2>            
+      <h2>
+        <a class="waves-effect waves-light btn" href="/expenses/new">Create expenses</a>
+      </h2>            
         
-  <table class="u-full-width">
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Friend</th>
-        <th>Description</th>
-        <th>Paid by</th>
-        <th>Amount ($)</th>
-        <th>Settle?</th>
-      </tr>
-    </thead>
-    <tbody>      
-         <tr>
-           <td><%= expenses.date %></td>
-           <td><%= expenses.name %></td>
-           <td><a href="/expenses/<%= expenses.id;%>/edit"><%= expenses.description; %></a></td>
-           <!-- <td><a href="/<%= expenses.id%>"><%= expenses.description; %></a></td> -->
-           <% if (expenses.paidByYou === true) { %>
-            <td>true</td>
-          <% } else { %>
-            <td>false</td>
-          <% } %>
-            <td><%= expenses.amount/2 %></td>
+      <table class="u-full-width">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Friend</th>
+            <th>Description</th>
+            <th>Paid by</th>
+            <th>Amount ($)</th>
+            <th>Settle?</th>
+          </tr>
+        </thead>
+    
+        <tbody>      
+          <tr>
+            <td><%= expenses.date %></td>
+            <td><%= expenses.name %></td>
+            <td><a href="/expenses/<%= expenses.id;%>/edit"><%= expenses.description; %></a></td>
+            <!-- <td><a href="/<%= expenses.id%>"><%= expenses.description; %></a></td> -->
+              <% if (expenses.paidByYou === true) { %>
+                <td>true</td>
+              <% } else { %>
+                <td>false</td>
+              <% } %>
+            <!-- <td><%= expenses.amount/2 %></td> -->
+            <% if (expenses.paidByYou === false) { %>
+              <td><span class="redText">-$<%= expenses.amount/2 %></span></td>
+            <% } else { %>
+              <td><span class="greenText">$<%= expenses.amount/2 %></span></td>
+           <% } %>
             <td>
               <form action="/expenses/<%=expenses.id; %>?_method=DELETE" method="POST">
-              <input type="submit" value="Settle Up?" />
-            </form>
-          </td>
-           
-           
+                <input type="submit" value="Settle Up?" />
+              </form>
+            </td>
           </tr>
-    </tbody>
-  </table>
+        </tbody>
+      </table>
+  
+      <h2>
+        <a class="waves-effect waves-light btn" href="/expenses/<%= expenses.id;%>/edit">Edit Expenses</a>
+      </h2>   
 
-  <!-- <div class='showbox'>
-    <h4><%= expenses.name; %></h4>
-    <h4>$<%= expenses.description; %></h4> -->
-    
-    <!--  ADD EDIT HERE-->
-    <h2>
-      <a class="waves-effect waves-light btn" href="/expenses/dashboard">Back to Dashboard</a>
-    </h2>    
-</div>
-  </body>
+      <h2>
+        <a class="waves-effect waves-light btn" href="/expenses/dashboard">Back to Dashboard</a>
+      </h2>    
     </div>
-    
-    
+  </body>
 </html>

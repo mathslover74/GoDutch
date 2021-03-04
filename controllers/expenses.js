@@ -99,7 +99,7 @@ expenses.get('/new',isAuthenticated , (req, res) => {
 expenses.get('/seed',isAuthenticated, (req, res)=>{
   expensesLog.create([
     {
-      createdBy: 'Mochi',
+      createdBy: 'Jason',
       date: '20-01-2021',
       description: 'drinks',
       name:'friend 1',

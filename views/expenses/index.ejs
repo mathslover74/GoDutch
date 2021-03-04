@@ -16,6 +16,28 @@
     <h2>
       <a class="waves-effect waves-light btn" href="/expenses/new">Create expenses</a>
     </h2>            
+
+    <% let total = 0 %>    
+      <% for (let i = 0; i < expenses.length; i++) { %>
+        <% if (expenses[i].paidByYou === true) { %>
+          <% total += expenses[i].amount/2; %>
+        <% } else { %>
+          <% total -= expenses[i].amount/2; %>
+        <% } %>
+      <% } %>
+
+      <% if (Math.sign(total)=== -1) { %>
+        <h2>I owe Total $<%= total %> to my friends</h2>
+      <% } %>
+
+      <% if (Math.sign(total)=== 1) { %>
+        <h2>My friends owe me Total of $<%= total %></h2>
+      <% } %>
+
+      <% if (Math.sign(total)=== 0) { %>
+        <h2>I owe nothing in total></h2>
+      <% } %>
+
     <!-- <table class="u-full-width"> -->
       <table class="sortable">
       <thead>

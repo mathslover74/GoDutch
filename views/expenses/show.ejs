@@ -26,8 +26,8 @@
     
         <tbody>      
           <tr>
-            <td><%= expenses.date %></td>
-            <td><%= expenses.name %></td>
+            <td><%= expenses.date; %></td>
+            <td><%= expenses.name; %></td>
             <td><a href="/expenses/<%= expenses.id;%>/edit"><%= expenses.description; %></a></td>
             <!-- <td><a href="/<%= expenses.id%>"><%= expenses.description; %></a></td> -->
               <% if (expenses.paidByYou === true) { %>
@@ -37,9 +37,9 @@
               <% } %>
             <!-- <td><%= expenses.amount/2 %></td> -->
             <% if (expenses.paidByYou === false) { %>
-              <td><span class="redText">-$<%= expenses.amount/2 %></span></td>
+              <td><span class="redText">-$<%= expenses.amount/2; %></span></td>
             <% } else { %>
-              <td><span class="greenText">$<%= expenses.amount/2 %></span></td>
+              <td><span class="greenText">$<%= expenses.amount/2; %></span></td>
            <% } %>
             <td>
               <form action="/expenses/<%=expenses.id; %>?_method=DELETE" method="POST">

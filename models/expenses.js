@@ -18,13 +18,3 @@ const expensesSchema = new Schema({
 const expenses = mongoose.model('expenses', expensesSchema)
 
 module.exports = expenses;
-
-// <!-- <% for (let i = 0; i < expenses.length; i++) { %>
-//   <tr>
-//     <td><%= expenses[i].date %></td>
-//     <td><a href="index/<%=i%>"><%= expenses[i].desciption %></a></td>
-//     <td><%= expenses[i].paidByYou %></td>
-//     <td><%= expenses[i].amount %></td>
-//   </tr>
- 
-// <% } %> -->

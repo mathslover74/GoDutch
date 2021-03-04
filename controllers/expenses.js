@@ -30,10 +30,22 @@ expenses.get('/dashboard',isAuthenticated, (req, res)=>{
   // if(req.session.currentUser){
     console.log('**********************');
     console.log(req.session.currentUser);
-      expensesLog.find({}, (error,allExpenses )=>{
+
+    /// show all expenses
+      // expensesLog.find({}, (error,allExpenses )=>{
+      //   res.render('expenses/index.ejs', {
+      //       expenses: allExpenses
+      //   });
+    // });
+
+//// to filter to user created by
+    User.findById(req.session.currentUser._id, (err,foundUser) => {
+      expensesLog.find({createdBy: req.session.currentUser.username},(error,allExpenseBtCurrentUser) => {
         res.render('expenses/index.ejs', {
-            expenses: allExpenses
+          expenses:allExpenseBtCurrentUser,
+          user:foundUser
         });
+      });
     });
   // } else {
   //     // res.redirect('/sessions/new');
@@ -46,7 +58,12 @@ expenses.get('/dashboard',isAuthenticated, (req, res)=>{
 expenses.get('/new',isAuthenticated , (req, res) => {
   // res.render('expenses/new.ejs');
   // if (req.session.currentUser) {
-    res.render('expenses/new.ejs');
+    User.findById(req.session.currentUser._id.name, (err,foundUserName) => {
+      res.render('expenses/new.ejs', {
+        user:req.session.currentUser
+      }); 
+    });
+    
   // } else {
   //   res.redirect('/sessions/new');
   // }

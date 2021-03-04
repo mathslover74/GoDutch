@@ -50,7 +50,7 @@
               </div>
               <div class="row">
                 <div class="input-field col s6">
-                  <input placeholder="you or your friend" id="description" type="text" class="validate" name="createdBy" required>
+                  <input value= '<%= user.username %>' id="description" type="text" class="validate" name="createdBy" readonly='<%=user.usename%>' required>
                   <label for="description">createdBy</label>
                 </div>
               </div>
@@ -62,7 +62,6 @@
                   <label for="description">Description</label>
                 </div>
               </div>
-      
       
               <div class="row">
                 <div class="input-field col s6">

@@ -79,7 +79,5 @@ app.get ('/expenses', isAuthenticated, (req,res)=> {
 //   }
 // })
 
-
-
 // Listen
 app.listen(PORT, () => console.log('auth happening on port', PORT))

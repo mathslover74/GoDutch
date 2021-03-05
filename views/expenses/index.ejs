@@ -7,17 +7,17 @@
   </head>
   <%- include ('../partials/nav2.ejs') -%>
   <body>
-    <div class="box">
-      <div>
-
-      
-      </div>
+    
+    </div>
+    <!-- <div class="boardLeft">
+      <h1>friends</h1> -->
+    <div class="box" class="boardRight">
       <h1>Welcome to Dashboard</h1>
-    <h2>
+      <h2>
       <a class="waves-effect waves-light btn" href="/expenses/new">Create expenses</a>
-    </h2>            
+      </h2>            
 
-    <% let total = 0 %>    
+      <% let total = 0 %>    
       <% for (let i = 0; i < expenses.length; i++) { %>
         <% if (expenses[i].paidByYou === true) { %>
           <% total += expenses[i].amount/2; %>
@@ -27,18 +27,18 @@
       <% } %>
 
       <% if (Math.sign(total)=== -1) { %>
-        <h2>I owe Total $<%= total %> to my friends</h2>
+        <h2>I owe total <span class="redText">-$<%= -total %></span> my friends</h2>
       <% } %>
 
       <% if (Math.sign(total)=== 1) { %>
-        <h2>My friends owe me Total of $<%= total %></h2>
+        <h2>My friends owe me total of <span class="greenText">$<%= total %></span></h2>
       <% } %>
 
       <% if (Math.sign(total)=== 0) { %>
         <h2>I owe nothing in total></h2>
       <% } %>
 
-    <!-- <table class="u-full-width"> -->
+      <!-- <table class="u-full-width"> -->
       <table class="sortable">
       <thead>
         <tr>
@@ -87,7 +87,7 @@
            
          <% } %>
       </tbody>
-    </table>
+      </table>
 
     </div>
     

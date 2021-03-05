@@ -24,6 +24,19 @@
   .redText {
     color: red;
   }
+
+  .boardLeft, .boardRight{
+    display: flex;
+    /* justify-content: center; */
+  }
+
+  .boardLeft {
+    width: 20px;
+  }
+
+  .boardRight {
+    width: 5000px;
+  }
   
   input[type=button],input[value=Logout],input[id=logout] #logout {
     background-color:#ee6e73;

@@ -11,7 +11,6 @@ This is a bill spilting app that tracks spendings between friends/family.
 - [Approaches Taken](#Approaches-taken)
 - [Accomplishments](#Accomplishments)
 - [Difficulties faced](#Difficulties-faced)
-- [Wireframe Design and User Stories](#Wireframe-Design-and-User-Stories)
 - [RESTful Routes](#RESTful-Routes)
 - [Additional Features were under Considerations](#Additional-Features-were-under-Considerations)
 - [Credits](#Credits)
@@ -93,11 +92,11 @@ This is a bill spilting app that tracks spendings between friends/family.
 | 7.  | Destroy | /sessions           | DELETE    | Destroys session and redirect to /                                               |
 |     |         | /expenses/:id       | DELETE    | Deletes requested show in database and redirects to Dasboard                     |
 
-## Additional Features were under Considerations
-<!-- * **Notifications** - application to send notifcation to user when there is another user commented on image, add new image to the album, followed album has new image, has new follower, etc. 
-* **Enhance Users Database** - to get more users profile into the database like profile picture, email address, gender, age, biodata, etc. 
-* **Like feature for image** - to have a like button for individual image -->
+## Additional Features were for further improvement.
+- View friends list that owe or owed money
+- Share data across with other friends using the same application
+- Spilt bill with more than 2 person
 
 ## Credits
-<!-- * All the **alpha trials users** and **fellow coursemates**  -->
+* All my fellow coursemates that help me with the testing and suggestion along the way.
 
